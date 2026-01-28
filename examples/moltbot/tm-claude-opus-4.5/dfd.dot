@@ -1,0 +1,539 @@
+digraph tm {
+    graph [
+        fontname = Arial;
+        fontsize = 14;
+    ]
+    node [
+        fontname = Arial;
+        fontsize = 14;
+        rankdir = lr;
+    ]
+    edge [
+        shape = none;
+        arrowtail = onormal;
+        fontname = Arial;
+        fontsize = 12;
+    ]
+    labelloc = "t";
+    fontsize = 20;
+    nodesep = 1;
+
+    subgraph cluster_boundary_AgentSandbox_f8af758679 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Agent Sandbox</i>>;
+        ]
+
+        process_BashToolExecutor_092386898c [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Bash Tool Executor";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_GatewayProcess_d2006ce1bb {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Gateway Process</i>>;
+        ]
+
+        server_MoltbotGateway_96ac87fabf [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Moltbot Gateway";
+            margin = 0.02;
+        ]
+
+        process_AgentRuntime_21633ce29f [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Agent Runtime";
+            margin = 0.02;
+        ]
+
+        process_ExecutionApprovalManager_ee67989773 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Execution Approval\nManager";
+            margin = 0.02;
+        ]
+
+        process_ChannelRouter_790d8ddb46 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Channel Router";
+            margin = 0.02;
+        ]
+
+        process_PluginLoader_f908445952 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Plugin Loader";
+            margin = 0.02;
+        ]
+
+        process_MediaProcessor_6a1f3c5aab [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Media Processor";
+            margin = 0.02;
+        ]
+
+        lambda_CronService_71f5f8539a [
+            shape = rectangle; style=rounded;
+
+            color = black;
+            fontcolor = "black";
+            label = <
+                <table border="0" cellborder="0" cellpadding="2">
+                    <tr><td><b>Cron Service</b></td></tr>
+                </table>
+            >;
+        ]
+
+        lambda_UpdateChecker_e6a7992346 [
+            shape = rectangle; style=rounded;
+
+            color = black;
+            fontcolor = "black";
+            label = <
+                <table border="0" cellborder="0" cellpadding="2">
+                    <tr><td><b>Update Checker</b></td></tr>
+                </table>
+            >;
+        ]
+
+        lambda_HealthMonitor_37509b9f83 [
+            shape = rectangle; style=rounded;
+
+            color = black;
+            fontcolor = "black";
+            label = <
+                <table border="0" cellborder="0" cellpadding="2">
+                    <tr><td><b>Health Monitor</b></td></tr>
+                </table>
+            >;
+        ]
+
+        datastore_RuntimeState_7eb89910ee [
+            shape = none;
+            fixedsize = shape;
+            image = "/home/izar/.cache/uv/archive-v0/Dv43EpmdSlKaFnNHNnndi/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+            imagescale = true;
+            color = black;
+            fontcolor = black;
+            xlabel = "Runtime State";
+            label = "";
+        ]
+
+    }
+
+    subgraph cluster_boundary_InternetExternal_acf3059e70 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Internet/External</i>>;
+        ]
+
+        actor_EndUser_2c440ebe53 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "End User";
+            margin = 0.02;
+        ]
+
+        actor_ChannelUser_c76a0a7067 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Channel User";
+            margin = 0.02;
+        ]
+
+        externalentity_AnthropicClaudeAPI_c6f87088c2 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Anthropic Claude\nAPI";
+            margin = 0.02;
+        ]
+
+        externalentity_OpenAIAPI_9345ab4c19 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "OpenAI API";
+            margin = 0.02;
+        ]
+
+        externalentity_DiscordAPI_86e4604564 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Discord API";
+            margin = 0.02;
+        ]
+
+        externalentity_TelegramBotAPI_b2e5892d06 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Telegram Bot API";
+            margin = 0.02;
+        ]
+
+        externalentity_SlackAPI_990b886585 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Slack API";
+            margin = 0.02;
+        ]
+
+        externalentity_WhatsAppWeb_9df04f8dae [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "WhatsApp Web";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_LocalHost_579e9aae81 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Local Host</i>>;
+        ]
+
+        externalentity_SignalCLIDaemon_65d0d57a00 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Signal CLI Daemon";
+            margin = 0.02;
+        ]
+
+        externalentity_iMessageService_a22abb380b [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "iMessage Service";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_LocalNetwork_88f2d9c06f {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Local Network</i>>;
+        ]
+
+        externalentity_Tailscale_4c7b12dcc9 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Tailscale";
+            margin = 0.02;
+        ]
+
+        server_MobileAppsiOSAndroid_2a2f1d5596 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Mobile Apps\n(iOS/Android)";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_UserSpace_f2eb7a3ff7 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>User Space</i>>;
+        ]
+
+        actor_DeviceOwner_0291419f72 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Device Owner";
+            margin = 0.02;
+        ]
+
+        server_CLIClient_b6d21685ee [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "CLI Client";
+            margin = 0.02;
+        ]
+
+        server_macOSMenuBarApp_385a5311c0 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "macOS Menu Bar App";
+            margin = 0.02;
+        ]
+
+        datastore_ConfigStore_98b81486cc [
+            shape = none;
+            fixedsize = shape;
+            image = "/home/izar/.cache/uv/archive-v0/Dv43EpmdSlKaFnNHNnndi/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+            imagescale = true;
+            color = black;
+            fontcolor = black;
+            xlabel = "Config Store";
+            label = "";
+        ]
+
+        datastore_CredentialStore_7113ed0f48 [
+            shape = none;
+            fixedsize = shape;
+            image = "/home/izar/.cache/uv/archive-v0/Dv43EpmdSlKaFnNHNnndi/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+            imagescale = true;
+            color = black;
+            fontcolor = black;
+            xlabel = "Credential Store";
+            label = "";
+        ]
+
+        datastore_SessionStore_b8773cb4e7 [
+            shape = none;
+            fixedsize = shape;
+            image = "/home/izar/.cache/uv/archive-v0/Dv43EpmdSlKaFnNHNnndi/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+            imagescale = true;
+            color = black;
+            fontcolor = black;
+            xlabel = "Session Store";
+            label = "";
+        ]
+
+        datastore_WhatsAppAuthStore_da43120000 [
+            shape = none;
+            fixedsize = shape;
+            image = "/home/izar/.cache/uv/archive-v0/Dv43EpmdSlKaFnNHNnndi/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+            imagescale = true;
+            color = black;
+            fontcolor = black;
+            xlabel = "WhatsApp Auth\nStore";
+            label = "";
+        ]
+
+    }
+
+    server_CLIClient_b6d21685ee -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(1) CLI commands\nto gateway";
+    ]
+
+    server_macOSMenuBarApp_385a5311c0 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(2) macOS app to\ngateway";
+    ]
+
+    server_MobileAppsiOSAndroid_2a2f1d5596 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(3) Mobile app to\ngateway";
+    ]
+
+    externalentity_DiscordAPI_86e4604564 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(4) Discord\nmessages inbound";
+    ]
+
+    externalentity_TelegramBotAPI_b2e5892d06 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(5) Telegram\nmessages inbound";
+    ]
+
+    externalentity_SlackAPI_990b886585 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(6) Slack messages\ninbound";
+    ]
+
+    externalentity_WhatsAppWeb_9df04f8dae -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(7) WhatsApp\nmessages inbound";
+    ]
+
+    externalentity_SignalCLIDaemon_65d0d57a00 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(8) Signal\nmessages inbound";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_AnthropicClaudeAPI_c6f87088c2 [
+        color = black;
+        fontcolor = black;
+        dir = both;
+        label = "(9) LLM inference\nrequests to Claude
+    (10) LLM responses\nfrom Claude";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_OpenAIAPI_9345ab4c19 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(11) LLM inference\nrequests to OpenAI";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> process_AgentRuntime_21633ce29f [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(12) Message to\nagent runtime";
+    ]
+
+    process_AgentRuntime_21633ce29f -> process_BashToolExecutor_092386898c [
+        color = black;
+        fontcolor = black;
+        dir = both;
+        label = "(13) Tool\nexecution request
+    (14) Tool\nexecution result";
+    ]
+
+    process_AgentRuntime_21633ce29f -> process_ExecutionApprovalManager_ee67989773 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(15) Approval\nrequest for\nsensitive command";
+    ]
+
+    process_ExecutionApprovalManager_ee67989773 -> actor_DeviceOwner_0291419f72 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(16) Approval\nprompt to user";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_DiscordAPI_86e4604564 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(17) Discord\nmessages outbound";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_TelegramBotAPI_b2e5892d06 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(18) Telegram\nmessages outbound";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_SlackAPI_990b886585 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(19) Slack\nmessages outbound";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> externalentity_WhatsAppWeb_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(20) WhatsApp\nmessages outbound";
+    ]
+
+    datastore_CredentialStore_7113ed0f48 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(21) Load\ncredentials";
+    ]
+
+    server_MoltbotGateway_96ac87fabf -> datastore_SessionStore_b8773cb4e7 [
+        color = black;
+        fontcolor = black;
+        dir = both;
+        label = "(22) Persist\nconversation
+    (23) Load\nconversation\nhistory";
+    ]
+
+    datastore_ConfigStore_98b81486cc -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(24) Load\nconfiguration";
+    ]
+
+    server_CLIClient_b6d21685ee -> datastore_ConfigStore_98b81486cc [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(25) Update\nconfiguration";
+    ]
+
+    externalentity_WhatsAppWeb_9df04f8dae -> process_MediaProcessor_6a1f3c5aab [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(26) Download\nmedia attachments";
+    ]
+
+    process_MediaProcessor_6a1f3c5aab -> process_AgentRuntime_21633ce29f [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(27) Processed\nmedia to agent";
+    ]
+
+    process_PluginLoader_f908445952 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(28) Plugin\nregistration";
+    ]
+
+    externalentity_Tailscale_4c7b12dcc9 -> server_MoltbotGateway_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(29) Remote access\nvia Tailscale";
+    ]
+
+}

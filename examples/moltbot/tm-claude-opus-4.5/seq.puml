@@ -1,0 +1,149 @@
+@startuml
+actor actor_EndUser_2c440ebe53 as "End User"
+actor actor_DeviceOwner_0291419f72 as "Device Owner"
+actor actor_ChannelUser_c76a0a7067 as "Channel User"
+entity externalentity_AnthropicClaudeAPI_c6f87088c2 as "Anthropic Claude API"
+entity externalentity_OpenAIAPI_9345ab4c19 as "OpenAI API"
+entity externalentity_DiscordAPI_86e4604564 as "Discord API"
+entity externalentity_TelegramBotAPI_b2e5892d06 as "Telegram Bot API"
+entity externalentity_SlackAPI_990b886585 as "Slack API"
+entity externalentity_WhatsAppWeb_9df04f8dae as "WhatsApp Web"
+entity externalentity_SignalCLIDaemon_65d0d57a00 as "Signal CLI Daemon"
+entity externalentity_iMessageService_a22abb380b as "iMessage Service"
+entity externalentity_Tailscale_4c7b12dcc9 as "Tailscale"
+entity server_MoltbotGateway_96ac87fabf as "Moltbot Gateway"
+entity server_CLIClient_b6d21685ee as "CLI Client"
+entity server_macOSMenuBarApp_385a5311c0 as "macOS Menu Bar App"
+entity server_MobileAppsiOSAndroid_2a2f1d5596 as "Mobile Apps (iOS/Android)"
+entity process_AgentRuntime_21633ce29f as "Agent Runtime"
+entity process_BashToolExecutor_092386898c as "Bash Tool Executor"
+entity process_ExecutionApprovalManager_ee67989773 as "Execution Approval Manager"
+entity process_ChannelRouter_790d8ddb46 as "Channel Router"
+entity process_PluginLoader_f908445952 as "Plugin Loader"
+entity process_MediaProcessor_6a1f3c5aab as "Media Processor"
+entity lambda_CronService_71f5f8539a as "Cron Service"
+entity lambda_UpdateChecker_e6a7992346 as "Update Checker"
+entity lambda_HealthMonitor_37509b9f83 as "Health Monitor"
+database datastore_ConfigStore_98b81486cc as "Config Store"
+database datastore_CredentialStore_7113ed0f48 as "Credential Store"
+database datastore_SessionStore_b8773cb4e7 as "Session Store"
+database datastore_WhatsAppAuthStore_da43120000 as "WhatsApp Auth Store"
+database datastore_RuntimeState_7eb89910ee as "Runtime State"
+
+server_CLIClient_b6d21685ee -> server_MoltbotGateway_96ac87fabf: (1) CLI commands to gateway
+note left
+Local CLI client sends commands and messages to gateway
+end note
+server_macOSMenuBarApp_385a5311c0 -> server_MoltbotGateway_96ac87fabf: (2) macOS app to gateway
+note left
+macOS menu bar app controls gateway via WebSocket
+end note
+server_MobileAppsiOSAndroid_2a2f1d5596 -> server_MoltbotGateway_96ac87fabf: (3) Mobile app to gateway
+note left
+iOS/Android apps connect to gateway over network
+end note
+externalentity_DiscordAPI_86e4604564 -> server_MoltbotGateway_96ac87fabf: (4) Discord messages inbound
+note left
+Bot receives messages from Discord via WebSocket gateway
+end note
+externalentity_TelegramBotAPI_b2e5892d06 -> server_MoltbotGateway_96ac87fabf: (5) Telegram messages inbound
+note left
+Bot receives messages from Telegram via long polling or webhook
+end note
+externalentity_SlackAPI_990b886585 -> server_MoltbotGateway_96ac87fabf: (6) Slack messages inbound
+note left
+Bot receives messages from Slack via Bolt framework
+end note
+externalentity_WhatsAppWeb_9df04f8dae -> server_MoltbotGateway_96ac87fabf: (7) WhatsApp messages inbound
+note left
+Messages received via WhatsApp Web protocol (Baileys)
+end note
+externalentity_SignalCLIDaemon_65d0d57a00 -> server_MoltbotGateway_96ac87fabf: (8) Signal messages inbound
+note left
+Messages from Signal via signal-cli daemon
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_AnthropicClaudeAPI_c6f87088c2: (9) LLM inference requests to Claude
+note left
+Gateway sends conversation context to Claude API
+end note
+externalentity_AnthropicClaudeAPI_c6f87088c2 -> server_MoltbotGateway_96ac87fabf: (10) LLM responses from Claude
+note left
+Claude API streams responses back to gateway
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_OpenAIAPI_9345ab4c19: (11) LLM inference requests to OpenAI
+note left
+Gateway sends requests to OpenAI-compatible endpoints
+end note
+server_MoltbotGateway_96ac87fabf -> process_AgentRuntime_21633ce29f: (12) Message to agent runtime
+note left
+Gateway dispatches messages to agent runtime for processing
+end note
+process_AgentRuntime_21633ce29f -> process_BashToolExecutor_092386898c: (13) Tool execution request
+note left
+Agent requests bash command execution
+end note
+process_BashToolExecutor_092386898c -> process_AgentRuntime_21633ce29f: (14) Tool execution result
+note left
+Bash executor returns command output to agent
+end note
+process_AgentRuntime_21633ce29f -> process_ExecutionApprovalManager_ee67989773: (15) Approval request for sensitive command
+note left
+Agent requests user approval for sensitive operations
+end note
+process_ExecutionApprovalManager_ee67989773 -> actor_DeviceOwner_0291419f72: (16) Approval prompt to user
+note left
+User prompted to approve/reject sensitive command
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_DiscordAPI_86e4604564: (17) Discord messages outbound
+note left
+Gateway sends responses to Discord via API
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_TelegramBotAPI_b2e5892d06: (18) Telegram messages outbound
+note left
+Gateway sends responses to Telegram via Bot API
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_SlackAPI_990b886585: (19) Slack messages outbound
+note left
+Gateway sends responses to Slack via API
+end note
+server_MoltbotGateway_96ac87fabf -> externalentity_WhatsAppWeb_9df04f8dae: (20) WhatsApp messages outbound
+note left
+Gateway sends responses via WhatsApp Web protocol
+end note
+datastore_CredentialStore_7113ed0f48 -> server_MoltbotGateway_96ac87fabf: (21) Load credentials
+note left
+Gateway loads API keys and tokens from credential store
+end note
+server_MoltbotGateway_96ac87fabf -> datastore_SessionStore_b8773cb4e7: (22) Persist conversation
+note left
+Gateway persists conversation history to session store
+end note
+datastore_SessionStore_b8773cb4e7 -> server_MoltbotGateway_96ac87fabf: (23) Load conversation history
+note left
+Gateway loads previous conversation context
+end note
+datastore_ConfigStore_98b81486cc -> server_MoltbotGateway_96ac87fabf: (24) Load configuration
+note left
+Gateway loads configuration on startup and reload
+end note
+server_CLIClient_b6d21685ee -> datastore_ConfigStore_98b81486cc: (25) Update configuration
+note left
+CLI writes configuration changes to config store
+end note
+externalentity_WhatsAppWeb_9df04f8dae -> process_MediaProcessor_6a1f3c5aab: (26) Download media attachments
+note left
+Media processor downloads attachments from channels
+end note
+process_MediaProcessor_6a1f3c5aab -> process_AgentRuntime_21633ce29f: (27) Processed media to agent
+note left
+Media processor provides images/files to agent runtime
+end note
+process_PluginLoader_f908445952 -> server_MoltbotGateway_96ac87fabf: (28) Plugin registration
+note left
+Plugins register hooks and capabilities with gateway
+end note
+externalentity_Tailscale_4c7b12dcc9 -> server_MoltbotGateway_96ac87fabf: (29) Remote access via Tailscale
+note left
+Remote clients connect to gateway via Tailscale tunnel
+end note
+@enduml

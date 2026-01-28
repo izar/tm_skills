@@ -1,0 +1,421 @@
+digraph tm {
+    graph [
+        fontname = Arial;
+        fontsize = 14;
+    ]
+    node [
+        fontname = Arial;
+        fontsize = 14;
+        rankdir = lr;
+    ]
+    edge [
+        shape = none;
+        arrowtail = onormal;
+        fontname = Arial;
+        fontsize = 12;
+    ]
+    labelloc = "t";
+    fontsize = 20;
+    nodesep = 1;
+
+    subgraph cluster_boundary_GatewayHostLocal_f8af758679 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Gateway Host\n(Local)</i>>;
+        ]
+
+        subgraph cluster_boundary_GatewayLocalStorage_2c440ebe53 {
+            graph [
+                fontsize = 10;
+                fontcolor = black;
+                style = dashed;
+                color = firebrick2;
+                label = <<i>Gateway Local\nStorage</i>>;
+            ]
+
+            datastore_ConfigStoremoltbotjson_b6d21685ee [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Config Store\n(moltbot.json)";
+                label = "";
+            ]
+
+            datastore_CredentialsStoreclawdbotcredentials_385a5311c0 [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Credentials Store \n(~/.clawdbot/crede\nntials)";
+                label = "";
+            ]
+
+            datastore_SessionStoresessionsjson_2a2f1d5596 [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Session Store\n(sessions.json)";
+                label = "";
+            ]
+
+            datastore_TranscriptStorejsonl_21633ce29f [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Transcript Store\n(*.jsonl)";
+                label = "";
+            ]
+
+            datastore_LogStoreclawdbotlogs_092386898c [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Log Store\n(~/.clawdbot/logs)";
+                label = "";
+            ]
+
+            datastore_PluginStoreclawdbotextensions_ee67989773 [
+                shape = none;
+                fixedsize = shape;
+                image = "/home/izar/venv/lib/python3.13/site-packages/pytm/images/datastore_black.png";
+                imagescale = true;
+                color = black;
+                fontcolor = black;
+                xlabel = "Plugin Store (~/.c\nlawdbot/extensions\n)";
+                label = "";
+            ]
+
+        }
+
+        server_GatewayWSHTTPServer_9df04f8dae [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Gateway WS/HTTP\nServer";
+            margin = 0.02;
+        ]
+
+        process_ChannelAdapters_65d0d57a00 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Channel Adapters";
+            margin = 0.02;
+        ]
+
+        process_AgentRuntime_a22abb380b [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Agent Runtime";
+            margin = 0.02;
+        ]
+
+        server_BrowserControlServer_4c7b12dcc9 [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Browser Control\nServer";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_Internet_acf3059e70 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Internet</i>>;
+        ]
+
+        subgraph cluster_boundary_ControlClients_88f2d9c06f {
+            graph [
+                fontsize = 10;
+                fontcolor = black;
+                style = dashed;
+                color = firebrick2;
+                label = <<i>Control Clients</i>>;
+            ]
+
+            actor_Operator_0291419f72 [
+                shape = square;
+                color = black;
+                fontcolor = black;
+                label = "Operator";
+                margin = 0.02;
+            ]
+
+            process_MoltbotCLI_b2e5892d06 [
+                shape = circle;
+                color = black;
+                fontcolor = black;
+                label = "Moltbot CLI";
+                margin = 0.02;
+            ]
+
+            process_WebChatmacOSUI_990b886585 [
+                shape = circle;
+                color = black;
+                fontcolor = black;
+                label = "WebChat / macOS UI";
+                margin = 0.02;
+            ]
+
+        }
+
+        externalentity_ExternalAPIClient_86e4604564 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "External API\nClient";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_MessagingPlatforms_579e9aae81 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Messaging\nPlatforms</i>>;
+        ]
+
+        actor_ChannelEndUser_c76a0a7067 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Channel End User";
+            margin = 0.02;
+        ]
+
+        externalentity_ChannelProviderAPIs_c6f87088c2 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "Channel Provider\nAPIs";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_ModelProviders_f2eb7a3ff7 {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Model Providers</i>>;
+        ]
+
+        externalentity_LLMProviderAPIs_9345ab4c19 [
+            shape = square;
+            color = black;
+            fontcolor = black;
+            label = "LLM Provider APIs";
+            margin = 0.02;
+        ]
+
+    }
+
+    subgraph cluster_boundary_NodeHosts_d2006ce1bb {
+        graph [
+            fontsize = 10;
+            fontcolor = black;
+            style = dashed;
+            color = firebrick2;
+            label = <<i>Node Hosts</i>>;
+        ]
+
+        server_NodeHostAgent_96ac87fabf [
+            shape = circle;
+            color = black;
+            fontcolor = black;
+            label = "Node Host Agent";
+            margin = 0.02;
+        ]
+
+    }
+
+    actor_Operator_0291419f72 -> process_MoltbotCLI_b2e5892d06 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(1) Operator runs\nCLI commands";
+    ]
+
+    process_MoltbotCLI_b2e5892d06 -> server_GatewayWSHTTPServer_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(2) CLI connects\nto Gateway WS/HTTP";
+    ]
+
+    process_WebChatmacOSUI_990b886585 -> server_GatewayWSHTTPServer_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(3) UI connects to\nGateway WS";
+    ]
+
+    externalentity_ExternalAPIClient_86e4604564 -> server_GatewayWSHTTPServer_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(4) External\nclient uses\nGateway HTTP APIs";
+    ]
+
+    actor_ChannelEndUser_c76a0a7067 -> externalentity_ChannelProviderAPIs_c6f87088c2 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(5) End user sends\nchannel message";
+    ]
+
+    externalentity_ChannelProviderAPIs_c6f87088c2 -> process_ChannelAdapters_65d0d57a00 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(6) Inbound\nchannel events to\nGateway";
+    ]
+
+    process_ChannelAdapters_65d0d57a00 -> server_GatewayWSHTTPServer_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(7) Normalized\ninbound messages";
+    ]
+
+    process_ChannelAdapters_65d0d57a00 -> externalentity_ChannelProviderAPIs_c6f87088c2 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(8) Outbound\nmessages to\nchannels";
+    ]
+
+    process_AgentRuntime_a22abb380b -> externalentity_LLMProviderAPIs_9345ab4c19 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(9) Model\ninference request";
+    ]
+
+    externalentity_LLMProviderAPIs_9345ab4c19 -> process_AgentRuntime_a22abb380b [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(10) Model\ninference response";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> process_AgentRuntime_a22abb380b [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(11) Dispatch\nsession to agent\nruntime";
+    ]
+
+    process_AgentRuntime_a22abb380b -> server_GatewayWSHTTPServer_9df04f8dae [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(12) Agent output\n+ tool results";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> datastore_ConfigStoremoltbotjson_b6d21685ee [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(13) Read/write\nconfiguration";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> datastore_CredentialsStoreclawdbotcredentials_385a5311c0 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(14) Read/write\ncredentials";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> datastore_SessionStoresessionsjson_2a2f1d5596 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(15) Update\nsession metadata";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> datastore_TranscriptStorejsonl_21633ce29f [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(16) Append\ntranscripts";
+    ]
+
+    server_GatewayWSHTTPServer_9df04f8dae -> datastore_LogStoreclawdbotlogs_092386898c [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(17) Write\noperational logs";
+    ]
+
+    process_AgentRuntime_a22abb380b -> server_NodeHostAgent_96ac87fabf [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(18) Invoke node\ntools";
+    ]
+
+    server_NodeHostAgent_96ac87fabf -> process_AgentRuntime_a22abb380b [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(19) Node tool\nresponses";
+    ]
+
+    process_AgentRuntime_a22abb380b -> server_BrowserControlServer_4c7b12dcc9 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(20) Browser\ncontrol requests";
+    ]
+
+    server_BrowserControlServer_4c7b12dcc9 -> process_AgentRuntime_a22abb380b [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(21) Browser\ncontrol responses";
+    ]
+
+    externalentity_ChannelProviderAPIs_c6f87088c2 -> process_ChannelAdapters_65d0d57a00 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(22) Inbound media\nto Gateway";
+    ]
+
+    process_ChannelAdapters_65d0d57a00 -> externalentity_ChannelProviderAPIs_c6f87088c2 [
+        color = black;
+        fontcolor = black;
+        dir = forward;
+        label = "(23) Outbound\nmedia to channels";
+    ]
+
+}
