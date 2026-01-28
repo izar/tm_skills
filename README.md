@@ -10,7 +10,9 @@ The directory "examples" contain pre-generated threat models using different age
 
 ## Skills Available
 
-pytm - invoke with either /pytm or "threat model this codebase with pytm". 
+*pytm* - invoke with either /pytm or "threat model this codebase with pytm". This skill builds a pytm script describing your system, the sequence and DFD diagrams associated with it, and a business analysis of the intent of the system with a summary of the findings as well as a JSON file listing all the findings.
+
+*ctm* - this skill takes a business request, a user-story or a developer story and establishes if it is a "security notable event" according to the Continuous Threat Modeling developer checklist. If it is, mitigations are suggested.
 
 ## Installation
 
