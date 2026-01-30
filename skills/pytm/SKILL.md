@@ -36,12 +36,12 @@ For attributes of data instances you can identify from the code and documentatio
 **Step 4: Create pytm script**
 Create a pytm script that uses your findings to describe the system. Use the content of ./REFERENCE.md as an example of a pytm script if you need it. Create a directory named tm in the root of the project, if it doesn't exist yet. Save your pytm script in the tm directory, naming it with the name of the project followed by _pytm.py 
 
-**Step 6: Validate the script**
+**Step 5: Validate the script**
 Using a python linter, verify that the newly created script is syntactically correct.
 Only proceed when the script is syntactically correct.
 Finalize by telling the user where to find the script in the filesystem.
 
-**Step 7: Execute the script**
+**Step 6: Execute the script**
 Run the newly created script with the argument "--json findings.json". If there are any Python level errors, correct them considering the syntaxt of pytm objects, their attributes and relationships. Repeat this step as many times as necessary until the script runs with no error messages. Once there are no error messages, run the script with the argument "--dfd dfd.png" and then again with the argument "--seq | plantuml -p -tpng > seq.png". You should end up with three new files in the tm directory: findings.json, seq.png and dfd.png. If you don't have them, stop here and alert the user there is a problem.
 
 **Step 7: Try a use case analysis of the project
