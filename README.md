@@ -14,6 +14,8 @@ The directory "examples" contain pre-generated threat models using different age
 
 *ctm* - this skill takes a business request, a user-story or a developer story and establishes if it is a "security notable event" according to the Continuous Threat Modeling developer checklist. If it is, mitigations are suggested.
 
+*4qpytm* - ask the user questions about what is being built, then use pytm to figure out threats, ask the user about possible mitigations while offering guidance, then grade the whole effort.
+
 ## Installation
 
 Please refer to your agent's documentation for how to install these skills, as each one's paths vary.
