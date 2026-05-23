@@ -16,7 +16,7 @@ The directory "examples" contain pre-generated threat models using different age
 
 *4qpytm* - ask the user questions about what is being built, then use pytm to figure out threats, ask the user about possible mitigations while offering guidance, then grade the whole effort.
 
-*tmt* - threat model new things - give it something to chew on and get a quick list of security starting points to deep dive into.
+*tmnt* - threat model new things - give it something to chew on and get a quick list of security starting points to deep dive into.
 
 ## Installation
 
