@@ -1,0 +1,25 @@
+{
+  "name": "tm-skills-marketplace",
+  "owner": {
+    "name": "I Tarandach",
+    "email": "izar.tarandach@gmail.com"
+  },
+  "metadata": {
+    "description": "Auxiliary skills for threat modeling - with and without OWASP pytm",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "tm-skills",
+      "source": "./",
+      "description": "Skills for threat modeling close to code.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": [
+        "security",
+        "appsec",
+        "threat-modeling"
+      ]
+    }
+  ]
+}
