@@ -1,0 +1,17 @@
+{
+  "name": "tm-skills",
+  "description": "Auxiliary skills for threat modeling - with and without OWASP pytm",
+  "version": "0.1.0",
+  "author": {
+    "name": "I Tarandach",
+    "url": "https://github.com/izar"
+  },
+  "homepage": "https://github.com/izar/tm_skills",
+  "repository": "https://github.com/izar/tm_skills",
+  "license": "MIT",
+  "keywords": [
+       "security",
+        "appsec",
+        "threat-modeling"
+  ]
+}
