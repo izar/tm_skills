@@ -2,6 +2,7 @@
 name: 4 Questions pytm
 description: create an initial PyTM-based threat model of your system by asking questions after the 4 Questions Framework
 dependencies: pytm 
+version: 1.0.1
 ---
 
 ## Overview
@@ -9,6 +10,11 @@ dependencies: pytm
 This Skill helps you create a threat model of a system at its inception, based on the 4 Questions Framework, some Socratic help and pytm.
 
 ## Method
+
+**Step 0: The framework
+ This skill helps create the base threat model by asking the user leading questions until it considers it has enough information to build a good representation of the system in question and ellicit threats against it.
+ Litmus test: if questions about the system are about to go bellow the level of the individual process, consider maximal depth reached. The maximum resolution should be at the higher level process, not Unix-level processes. 
+
  Copy this checklist and track your progress:
 
 ````
